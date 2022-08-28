@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transform Rotate Angle Slider</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Transform Rotate Angle Slider</h1>
+
+<div class="js-angle-slider">
+  <!--
+    prev,nextボタン
+  -->
+  <div class="js-angle-slider__pager">
+    <button class="js-angle-slider__prev" type="button">
+      prev
+    </button>
+    <button class="js-angle-slider__next" type="button">
+      next
+    </button>
+  </div>
+  <!--
+      .js-angle-slider内でドットナビゲーションを
+      任意の場所に出力したい場合は以下のdivを追加する
+      <div class="js-angle-slider__dots"></div>
+
+      （無い場合は .js-angle-slider__bodyの末尾に追加される）
+  -->
+  <div class="js-angle-slider__body">
+    <!--
+      data-slide-angle="12"：分割する角度
+      data-show="7"：画面内に表示させる枚数
+      data-speed="400"：next,prevボタン、ドラッグ後の移動スピード
+      data-drag-speed-ratio="0.1"：ドラッグ中の移動スピード
+      data-dots="true"：ドットナビゲーション表示
+    -->
+    <div class="js-angle-slider__list" data-slide-angle="12" data-show="7" data-speed="400" data-drag-speed-ratio="0.1" data-dots="true">
+      <div class="js-angle-slider__item"><img src="https://picsum.photos/id/275/300/400" alt="" width="300" height="400"></div>
+      <div class="js-angle-slider__item"><img src="https://picsum.photos/id/200/300/400" alt="" width="300" height="400"></div>
+      <div class="js-angle-slider__item"><img src="https://picsum.photos/id/1062/300/400" alt="" width="300" height="400"></div>
+      <div class="js-angle-slider__item"><img src="https://picsum.photos/id/1003/300/400" alt="" width="300" height="400"></div>
+      <div class="js-angle-slider__item"><img src="https://picsum.photos/id/1001/300/400" alt="" width="300" height="400"></div>
+    </div>
+  </div>
+</div>
+
+
+<script src="function.js"></script>
+
+</body>
+</html>
