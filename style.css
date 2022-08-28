@@ -1,4 +1,11 @@
 @charset "UTF-8";
+/* セットアップまで非表示にする */
+.js-angle-slider__list {
+  /* visibility: hidden; */
+}
+.js-angle-slider__list.is-initialized {
+  /* visibility: visible; */
+}
 .js-angle-slider__body {
   overflow: hidden;
   position: relative;
@@ -7,13 +14,6 @@
   display: flex;
   justify-content: center;
   position: relative;
-}
-/* セットアップまで非表示も可能 */
-.js-angle-slider__list {
-  /* visibility: hidden; */
-}
-.js-angle-slider__list.is-initialized {
-  /* visibility: visible; */
 }
 .js-angle-slider__list.is-initialized .js-angle-slider__item {
   position: absolute;
