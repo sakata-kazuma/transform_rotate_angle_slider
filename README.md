@@ -1,11 +1,15 @@
 # Transform Rotate Angle Slider (Vanilla JS)
 指定した角度での分割配置 + スライダー機能をJavaScriptで実装したサンプルです。
 
-#### デモ
+　  
+
+## デモ
 https://codepen.io/sakata-kazuma/pen/YzaowJw
 
+　  
 
-### 設定
+
+## HTML設定
 
 ```html
 <div class="js-angle-slider">
@@ -44,9 +48,27 @@ https://codepen.io/sakata-kazuma/pen/YzaowJw
 </div>
 ```
 
-　
+　　  
 
-### 動作環境
+
+
+## CSS設定
+
+```css
+/* セットアップまで非表示にする */
+.js-angle-slider__list {
+  visibility: hidden;
+}
+.js-angle-slider__list.is-initialized {
+  visibility: visible;
+}
+```
+
+　　  
+
+
+
+## 動作環境
 Google Chrome 最新版
 Firefox 最新版
 Safari 最新版
