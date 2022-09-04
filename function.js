@@ -300,6 +300,18 @@ const angleSlider = () => {
 			要素の移動
 		*/
 
+		//will-change設定
+		const setWillChange = () => {
+			for(let i = 0; i < itemsLen; i ++ ) {
+				items[i].style.willChange = 'transform';
+			}
+		}
+		const removeWillChange = () => {
+			for(let i = 0; i < itemsLen; i ++ ) {
+				items[i].style.willChange = '';
+			}
+		}
+
 		//ページャー
 		/*
 			イージング設定
@@ -339,9 +351,9 @@ const angleSlider = () => {
 
 						isBusy = false;
 
-						//アクティブclass変更
 						changeActiveClass();
 
+						removeWillChange();
 
 						/*
 							スライドアニメーション終了時に1回呼ばれる場所なので、
@@ -360,6 +372,7 @@ const angleSlider = () => {
 				elm.requestID = requestAnimationFrame(move);
 			}
 
+			setWillChange();
 			elm.requestID = requestAnimationFrame(move);
 		}
 
@@ -455,6 +468,17 @@ const angleSlider = () => {
 		dotsInitialize();
 
 
+		//要素クリック
+		for(let i = 0; i < itemsLen; i ++ ) {
+			const elm = items[i];
+			elm.addEventListener('click', ()=> {
+				if(!elm.classList.contains('is-active')) {
+					navMove(-elm.angle);
+				}
+			});
+		}
+
+
 		/*
 			スワイプ、ドラッグ対応
 		*/
@@ -475,11 +499,11 @@ const angleSlider = () => {
 
 		//マウスダウン、タッチスタート（移動開始）
 		const startFunc = e => {
-			e.preventDefault();
 			//画面上のx位置を取得
 			if(e.type === 'touchstart') {
 				startX = e.changedTouches[0].pageX;
 			} else {
+				e.preventDefault();
 				startX = e.pageX;
 			}
 
@@ -530,11 +554,15 @@ const angleSlider = () => {
 
 			//移動距離を保存
 			beforeX = moveX;
+
+			setWillChange();
 		}
 
 		//マウスアップ、タッチエンド（移動終了）
 		const endFunc = e => {
-			e.preventDefault();
+			if(e.type !== 'touchend') {
+				e.preventDefault();
+			}
 			//設定をリセット
 			slider.classList.remove('is-drag');
 			isDown = false;
@@ -576,6 +604,8 @@ const angleSlider = () => {
 					navMove(-approximateAngleLeft);
 				}
 			}
+
+			removeWillChange();
 		}
 
 		//スワイプ対応
